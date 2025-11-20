@@ -2,45 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Color tokens using HSL only */
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --muted: 220 14% 96%;
+    --border: 220 13% 91%;
+
+    --primary: 222 89% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 262 83% 58%;
+    --accent: 199 89% 48%;
+  }
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 96%;
+    --muted: 215 15% 25%;
+    --border: 217 19% 27%;
+
+    --primary: 222 89% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 262 83% 65%;
+    --accent: 199 89% 60%;
   }
 
-  html {
-    font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  body {
-    @apply antialiased;
-  }
+  html { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  body { @apply antialiased bg-[hsl(var(--background))] text-[hsl(var(--foreground))]; }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
 @layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+  .bg-background { background-color: hsl(var(--background)); }
+  .text-foreground { color: hsl(var(--foreground)); }
+  .bg-primary { background-color: hsl(var(--primary)); }
+  .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+  .bg-secondary { background-color: hsl(var(--secondary)); }
+  .bg-accent { background-color: hsl(var(--accent)); }
+  .border-border { border-color: hsl(var(--border)); }
+  .bg-muted { background-color: hsl(var(--muted)); }
 }
